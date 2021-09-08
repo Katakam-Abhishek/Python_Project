@@ -1,0 +1,465 @@
+import calendar
+from datetime import date
+string = 'Welcome to the ANDHRA BINGO CAPITALS BUS RESERVATION PORTAL'
+new_string = string.center(160, '*')
+print(new_string)
+print('\nWe provide services in ANDHRA PRADESH,TELANGANA,KARNATAKA,TAMIL NADU and KERALA')
+seatno=[]
+for i in range(1,32):
+    seatno.append([[i for i in range(1,41)] for i in range(0,24)])
+a=[]
+while 1:
+    def cancel(r,choice, seat,di,dd):
+
+        if r == r1:
+            if di >= 0:
+                if choice == 1:
+                    seatno[dd-1][0][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][1][seat - 1] = seat
+                elif choice == 3:
+                    seatno[dd-1][2][seat - 1] = seat
+
+            else:
+                if choice == 1:
+                    seatno[dd-1][3][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][4][seat - 1] = seat
+                elif choice == 3:
+                    seatno[dd-1][5][seat - 1] = seat
+
+        elif r == r2:
+            if di >= 0:
+                if choice == 1:
+                    seatno[dd-1][6][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][7][seat - 1] = seat
+                elif choice == 3:
+                    seatno[dd-1][8][seat - 1] = seat
+            else:
+                if choice == 1:
+                    seatno[dd-1][9][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][10][seat - 1] = seat
+
+                elif choice == 3:
+                    seatno[dd-1][11][seat - 1] = seat
+
+        elif r == r3:
+            if di >= 0:
+                if choice == 1:
+                    seatno[dd-1][12][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][13][seat - 1] = seat
+
+                elif choice == 3:
+                    seatno[dd-1][14][seat - 1] = seat
+
+
+            else:
+                if choice == 1:
+                    seatno[dd-1][15][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][16][seat - 1] = seat
+                elif choice == 3:
+                    seatno[dd-1][17][seat - 1] = seat
+
+        elif r == r4:
+            if di >= 0:
+                if choice == 1:
+                    seatno[dd-1][18][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][19][seat - 1] = seat
+                elif choice == 3:
+                    seatno[dd-1][20][seat - 1] = seat
+
+            else:
+                if choice == 1:
+                    seatno[dd-1][21][seat - 1] = seat
+                elif choice == 2:
+                    seatno[dd-1][22][seat - 1] = seat
+                elif choice == 3:
+                    seatno[dd-1][23][seat - 1] = seat
+
+
+    while 1:
+      select=int(input("\nEnter '1' to continue to book your ticket or '2' to cancel a booked ticket or '3' to exit the portal: "))
+      if select==1:
+        break
+      elif select==2:
+        print("\nEnter the cancellation details")
+        for i in range(len(a)):
+            print("name:{},mobile_number:{},aadhar_number:{}".format(a[i][0],a[i][3],a[i][2]))
+        name=input("\nEnter your name as per your ticket: ")
+        phno=int(input("Enter your phone number: "))
+        aadar=int(input("Enter your Aadhar UID: "))
+        for i in range(len(a)):
+            if a[i][0]==name and a[i][3]==phno and a[i][2]==aadar:
+                cancel(a[i][10],a[i][12],a[i][11],a[i][5],a[i][13])
+                a.pop(i)
+                print("\nYour ticket is cancelled successfully")
+                break
+        else:
+            print('\nOops!Looks like you have entered wrong details')
+      elif select==3:
+        break
+      else:
+        print("\nInvalid choice")
+    if select==3:
+      break
+
+    print("\nWe provide services in....")
+
+    while (True):
+        # r1 indicates route from CHENNAI to VISHAKAPATNAM
+        r1 = {'CHENNAI': [0, 0], 'NELLORE': [175, 200], 'ONGOLE': [302, 330], 'GUNTUR': [415, 440],
+              'VIJAYAWADA': [452, 470], 'TADEPALLIGUDEM': [562, 606],
+              'RAJAMUNDRY': [610, 678], 'TUNI': [708, 792], 'VISHAKAPATNAM': [797, 906]}
+
+        # r2 indicates route from VIJAYAWADA to HYDERABAD
+        r2 = {'VIJAYAWADA': [0, 0], 'NANDIGAMA': [54, 66], 'KODAD': [97, 123], 'SURYAPET': [139, 147],
+              'GUNDRAMPALLY': [238, 243], 'HYDERABAD': [275, 309]}
+
+        # r3 indicates route from VIJAYAWADA to BANGLORE
+        r3 = {'VIJAYAWADA': [0, 0], 'GUNTUR': [41, 60], 'ONGOLE': [152, 160], 'KAVALI': [223, 230],
+              'NELLORE': [283, 290], 'TIRUPATI': [414, 440], 'KOLAR': [575, 660], 'HOSKOTE': [603, 700],
+              'BANGALORE': [632, 750]}
+
+
+        # r4 indicates route from VIJAYAWADA to PALAKKAD
+        r4 = {'VIJAYAWADA': [0, 0], 'GUNTUR': [41, 60], 'ONGOLE': [152, 160], 'KAVALI': [223, 230],
+              'NELLORE': [283, 290], 'TIRUPATI': [414, 440], 'SALEM': [788, 800], 'ERODE': [850, 880],
+              'COIMBATORE': [949, 980], 'PALAKKAD': [998, 1040]}
+
+        print(f"\nChennai - Vishakapatnam (and viceversa) via...")
+        for k,v in r1.items():
+            print(k)
+        print(f"\nVijayawada - Hyderabad (and viceversa) via...")
+        for k,v in r2.items():
+            print(k)
+        print(f"\nVijayawada - Bangalore (and viceversa) via...")
+        for k,v in r3.items():
+            print(k)
+        print(f"\nVijayawada - Palakkad (and viceversa) via...")
+        for k,v in r4.items():
+            print(k)
+        def checkdate(d1,m1,y1):
+            today1=date.today()
+            today_date=int(today1.strftime("%d"))
+            today_month=int(today1.strftime("%m"))
+            today_year=int(today1.strftime("%Y"))
+            if (y1-today_year)>0:
+                return d1,m1,y1
+            elif (y1-today_year)==0:
+                if(m1-today_month)>0:
+                    return d1,m1,y1
+                elif(m1-today_month)==0:
+                    if(d1-today_date)>=0:
+                        return d1,m1,y1
+                    else:
+                        print("INVALID INPUT")
+                        return 0,0,0
+                else:
+                    print("INVALID INPUT")
+                    return 0,0,0
+
+            else:
+                print("INVALID DATE")
+                return 0,0,0
+
+
+        while True:
+         m1=int(input("\nMonth(MM):"))
+         y1=int(input("\nYear(YYYY):"))
+         t=calendar.month(y1,m1)
+         print(t)
+         d1=int(input("\nDD:"))
+         dd,mm,yy=checkdate(d1,m1,y1)
+         if (dd!=0 and mm!=0 and yy!=0):
+             break
+        lis=['ANDHRA PRADESH','TELANGANA','KARNATAKA','TAMIL NADU','KERALA']
+        try:
+            s1 = input("\nEnter your source state: ").upper()
+            e1 = input("\nEnter your destination state: ").upper()
+            if s1 in lis and e1 in lis:
+                print("\nwait we're fetching results for you")
+
+        except:
+            print("INVALID DATA")
+            s1 = input("\nEnter your source state: ").upper()
+            e1 = input("\nEnter your destination state: ").upper()
+
+        def places(m):
+            while (True):
+                start = input('\nEnter your town/city name from where you are going to start: ').upper()
+                end = input('\nEnter your destination  where you wanna go: ').upper()
+                if start in m and end in m:
+                    route = m
+                    break
+                else:
+                    print("we couldn't found route for you retry again :(")
+            return start, end, route
+
+
+        def distance(s, e):
+            di = s - e
+            d = abs(di)
+            return d, di
+
+
+        def time(i, k):
+            t = [10, 14, 19]
+            if di<0:
+                time1 = (t[i]*60) + k
+                time = time1/60
+            else:
+                l1=list(r)
+                st=l1[-1]
+                time1 = (r[st][1]) + (t[i] * 60) - k
+                time = time1 / 60
+            j=int(time)
+            n=time-j
+            if n>=(0.60):
+                j+=1+n-0.6
+            if j > 24:
+                j = 24 - time
+            return abs(round(j,2))
+
+
+
+        def cost(c, d):
+            # c=1 means A/C seater bus
+            if c == 1:
+                pri = d * 5
+            # c=2 means A/C sleeper bus
+            elif c == 2:
+                pri = d * 3
+            # c=3 means NoN-A/C bus
+            elif c == 3:
+                pri = d * 7
+            return pri
+
+
+        if (s1 == 'TAMIL NADU' and e1 == 'ANDHRA PRADESH') or (s1 == 'ANDHRA PRADESH' and e1 == 'TAMIL NADU'):
+            print('\nWe provide services in:\n')
+            for k,v in r1.items():
+                print(k)
+            s, e, r = places(r1)
+            d, di = distance(r1[s][0], r1[e][0])
+            break
+
+        elif (s1 == 'ANDHRA PRADESH' and e1 == 'TELANGANA') or (s1 == 'TELANGANA' and e1 == 'ANDHRA PRADESH'):
+            print('\nwe provide servicecs in:\n')
+            for k,v in r2.items():
+                print(k)
+            s, e, r = places(r2)
+            d, di = distance(r2[s][0], r2[e][0])
+            break
+        elif (s1 == 'ANDHRA PRADESH' and e1 == 'KARNATAKA') or (s1 == 'KARNATAKA' and e1 == 'ANDHRA PRADESH'):
+            print('\nwe provide services in:\n')
+            for k,v in r3.items():
+                print(k)
+            s, e, r = places(r3)
+            d, di = distance(r3[s][0], r3[e][0])
+            break
+        elif (s1 == 'ANDHRA PRADESH' and e1 == 'KERALA') or (s1 == 'KERALA' and e1 == 'ANDHRA PRADESH'):
+            print('\nwe provide services in:\n')
+            for k,v in r1.items():
+                print(k)
+            s, e, r = places(r4)
+            d, di = distance(r4[s][0], r4[e][0])
+            break
+        else:
+            print('\nsorry we couldn\'t find your source or destination')
+
+    t1 = time(0, r[s][1])
+    t2 = time(1, r[s][1])
+    t3 = time(2, r[s][1])
+    c1 = cost(1, d)
+    c2 = cost(2, d)
+    c3 = cost(3, d)
+
+    print(f"\nThe distance between {s} to {e} is {d}")
+    print(f"\nFetching the buses between {s} and {e}...")
+    print(f"1. 'bus_Via': '{s} - {e}', 'Timings': {t1}, 'Type': 'A/C seater','cost':{c1} ")
+    print(f"2. 'bus_Via': '{s} - {e}', 'Timings': {t2}, 'Type': 'A/C seater','cost':{c2} ")
+    print(f"3. 'bus_Via': '{s} - {e}', 'Timings': {t3}, 'Type': 'A/C seater','cost':{c3} ")
+
+    choice = int(input("\nEnter you travelling availability 1 , 2 , 3 : "))
+
+    # pattern is prited here sitting layot after booking it will be updated from seat number to M or F
+    def ticket(a,n):
+        total_cost=0
+        print(f"\nyour ticket for journey starting from {s} to {e} is booked")
+        for i in range(n):
+          print("\n\n","**"*5)
+          print(f"\tTICKET {i+1}")
+          print("**"*5)
+          print("Name\t\t\t: ", a[i][0])
+          print("Age \t\t\t: ",a[i][1] )
+          print("Sex \t\t\t: ", a[i][4])
+          print(f"Your seat number\t: {a[i][5]}")
+          print(f"Bus scheduled at\t: {a[i][6]}")
+          print("**"*5)
+          print(f"Ticket cost\t\t: {a[i][7]} ")
+          print("**"*5)
+          total_cost=total_cost+a[i][7]
+        print(f"\nTotal cost for {n} ticket : {total_cost}")
+    v={}
+    def get_details(k, g, z):
+
+        if choice == 1:
+            t = t1
+            c = c1
+        elif choice == 2:
+            t = t2
+            c = c2
+        elif choice == 3:
+            t = t3
+            c = c3
+        try :
+            name = str(input("Name : "))
+        except ValueError:
+            print("please enter in correct datatype")
+            name = str(input("Name : "))
+        try:
+            age = int(input("Age  : "))
+        except ValueError:
+            print("please enter in correct datatype")
+            age = int(input("Age  : "))
+        while True:
+          try:
+            mno = int(input("India +91:"))
+            if len(str(mno))!=10:
+                print("should be 10 digit number")
+            else:
+                break
+          except ValueError:
+              print("please enter in correct datatype")
+        while True:
+          try:
+            aano = int(input("Enter your Aadhar UID: "))
+            if len(str(aano)) !=12:
+               print("should be 12 digit")
+            else:
+                break
+          except ValueError:
+              print("please enter in correct datatype")
+
+        a.append([name,age,aano,mno,g,k,t,c,s,e,r,choice,di,dd])
+
+
+    def update(m, k):
+        while True:
+            gender = str(input("\nMale or Female : "))
+            if gender.lower() == 'male' or gender.lower()=='m':
+                m[k - 1] = 'M'
+                break
+            elif gender.lower() == 'female' or gender.lower()=='f':
+                m[k - 1] = 'F'
+                break
+            else:
+                print("\nInvalid input : please enter male or female ")
+        get_details(k, gender,m[k-1])
+
+
+    def booking(m):
+
+        n = int(input('\nEnter how many seats you wish to book: '))
+        print("These are the seats :")
+        for i in range(1, n + 1):
+            count=0
+            for k in range(10):
+              for j in range(4):
+                print(m[count],end=' ')
+                count+=1
+              print()
+            print("M-indicates the seates booked by MALE")
+            print("F-indicates the seates booked by FEMALE")
+            while (True):
+                seat = int(input("\nChoose your seat number : "))
+                if str(m[seat - 1]) != 'M':
+                    if str(m[seat - 1]) != 'F':
+                        if m[seat - 1] < 41 and m[seat - 1] > 0:
+                            update(m, seat)
+                            break
+                    else:
+                        print("\nThe entered seat number is invalid or might have booked by others")
+                else:
+                    print("\nThe entered seat number is invalid or might have booked by others")
+        ticket(a,n)
+
+
+
+    if r == r1:
+        if di >= 0:
+            if choice == 1:
+                booking(seatno[dd-1][0])
+            elif choice == 2:
+                booking(seatno[dd-1][1])
+            elif choice == 3:
+                booking(seatno[dd-1][2])
+
+        else:
+            if choice == 1:
+                booking(seatno[dd-1][3])
+            elif choice == 2:
+                booking(seatno[dd-1][4])
+            elif choice == 3:
+                booking(seatno[dd-1][5])
+
+    elif r == r2:
+        if di >= 0:
+            if choice == 1:
+                booking(seatno[dd-1][6])
+            elif choice == 2:
+                booking(seatno[dd-1][7])
+            elif choice == 3:
+                booking(seatno[dd-1][8])
+        else:
+            if choice == 1:
+                booking(seatno[dd-1][9])
+            elif choice == 2:
+                booking(seatno[dd-1][10])
+
+            elif choice == 3:
+                booking(seatno[dd-1][11])
+
+    elif r == r3:
+        if di >= 0:
+            if choice == 1:
+                booking(seatno[dd-1][12])
+            elif choice == 2:
+                booking(seatno[dd-1][13])
+
+            elif choice == 3:
+                booking(seatno[dd-1][14])
+
+
+        else:
+            if choice == 1:
+                booking(seatno[dd-1][15])
+            elif choice == 2:
+                booking(seatno[dd-1][16])
+            elif choice == 3:
+                booking(seatno[dd-1][17])
+
+    elif r == r4:
+        if di >= 0:
+            if choice == 1:
+                booking(seatno[dd-1][18])
+            elif choice == 2:
+                booking(seatno[dd-1][19])
+            elif choice == 3:
+                booking(seatno[dd-1][20])
+
+        else:
+            if choice == 1:
+                booking(seatno[dd-1][21])
+            elif choice == 2:
+                booking(seatno[dd-1][22])
+            elif choice == 3:
+                booking(seatno[dd-1][23])
+    log = input("\nEnter 'Yes' to continue or 'No' to exit the portal: ").upper()
+    if log == 'NO':
+        print("\nThank You!!! Visit again.")
